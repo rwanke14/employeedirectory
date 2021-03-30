@@ -10,11 +10,11 @@ class SearchResults extends Component {
   };
 
   componentDidMount() {
-    this.searchEmployees("Alice");
+    this.searchEmployees("");
   }
 
-  searchEmployees = (query) => {
-    API.getEmployees(query)
+  searchEmployees = () => {
+    API.getEmployees()
       .then((res) => this.setState({ results: res.data.data }))
       .catch((err) => console.log(err));
   };
