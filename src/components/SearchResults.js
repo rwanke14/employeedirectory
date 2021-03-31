@@ -68,6 +68,21 @@ class SearchResults extends Component {
     });
   };
 
+  sortFields = (employees) => {
+    let sortList = this.state.results
+
+    sortList.sort(function(a,b){
+        if (a > b) {
+            return 1;
+        }
+        if (a < b) {
+            return -1
+        }
+    })
+    
+
+  }
+
 
   render() {
     
@@ -89,6 +104,7 @@ class SearchResults extends Component {
         />
         <EmployeeList
           results={this.state.filteredEmployees}
+          
         />
       </div>
     );

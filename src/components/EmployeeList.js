@@ -22,14 +22,14 @@ function EmployeeList(props) {
           {props.results.map(results => (
             <tr>
               <td><img alt={results.picture.thumbnail} className="img-fluid" src={results.picture.thumbnail} style={{ margin: "0 auto" }} /></td>
-              <td>{results.name.first}</td>
-              <td>{results.name.last}</td>
-              <td>{results.gender}</td>
-              <td>{results.phone}</td>
-              <td>{results.cell}</td>
-              <td>{results.location.city}</td>
-              <td>{results.location.state}</td>
-              <td>{results.dob.age}</td>
+              <td onClick={() => props.sortList}>{results.name.first}</td>
+              <td onClick={() => props.sortList}>{results.name.last}</td>
+              <td onClick={() => props.sortList}>{results.gender}</td>
+              <td onClick={() => props.sortList}>{results.phone}</td>
+              <td onClick={() => props.sortList}>{results.cell}</td>
+              <td onClick={() => props.sortList}>{results.location.city}</td>
+              <td onClick={() => props.sortList}>{results.location.state}</td>
+              <td onClick={() => props.sortList}>{results.dob.age}</td>
             </tr>
           ))}
         </tbody>
