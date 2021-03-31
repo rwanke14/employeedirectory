@@ -7,6 +7,7 @@ class SearchResults extends Component {
   state = {
     search: "",
     results: [],
+    filteredEmployees: []
   };
 
   componentDidMount() {
@@ -15,34 +16,58 @@ class SearchResults extends Component {
 
   searchEmployees = () => {
     API.getEmployees()
-      .then((res) => this.setState({ results: res.data.data }))
+   // .then((res) => res.json())
+      .then((users) => {
+          console.log(users.data.results)
+          this.setState({ results: users.data.results })
+        })
       .catch((err) => console.log(err));
   };
 
 
   handleInputChange = event => {
-    const name = event.target.name;
+    // const input = event.target.name;
     const value = event.target.value;
+    const filteredEmployee = this.state.results.filter(
+        (filteredEmployees) => {
+            return (
+            filteredEmployees.name.first.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 ||
+            filteredEmployees.name.last.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+
+            )
+        }
+    )
     this.setState({
-      [name]: value
+      //[name]: value
+        search: value,
+      filteredEmployees: filteredEmployee
     });
   };
 
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    this.searchEmployees(this.state.search);
-  };
+//   handleFormSubmit = event => {
+//     event.preventDefault();
+//     this.searchEmployees(this.state.search);
+//   };
 
   render() {
+    // const filteredEmployee = this.state.results.filter(
+    //     (filteredEmployees) => {
+    //         return (
+    //         filteredEmployees.name.first.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 ||
+    //         filteredEmployees.name.last.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
+
+    //         )
+    //     }
+    // )
     return (
       <div>
         <SearchForm
           search={this.state.search}
-          handleFormSubmit={this.handleFormSubmit}
+          //handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
         />
-        <EmployeeList results={this.state.results} />
+        <EmployeeList results={this.state.results} filteredEmployees={this.state.filteredEmployee}/>
       </div>
     );
   }
