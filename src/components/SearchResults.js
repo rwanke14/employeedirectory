@@ -7,7 +7,7 @@ class SearchResults extends Component {
   state = {
     search: "",
     results: [],
-    filteredEmployees: []
+    filteredEmployees: [],
   };
 
   componentDidMount() {
@@ -16,41 +16,62 @@ class SearchResults extends Component {
 
   searchEmployees = () => {
     API.getEmployees()
-   // .then((res) => res.json())
+      // .then((res) => res.json())
       .then((users) => {
-          console.log(users.data.results)
-          this.setState({ results: users.data.results })
-        })
+        console.log(users.data.results);
+        
+        this.setState({ results: users.data.results });
+        this.setState({ filteredEmployees: users.data.results })
+      })
       .catch((err) => console.log(err));
   };
 
-
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     // const input = event.target.name;
-    const value = event.target.value;
-    const filteredEmployee = this.state.results.filter(
-        (filteredEmployees) => {
-            return (
-            filteredEmployees.name.first.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1 ||
-            filteredEmployees.name.last.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
-
-            )
-        }
-    )
+    const value = event.target.value
+    const filteredEmployees = (event.target.value).toLowerCase();
+    const filteredEmployee = this.state.results.filter(results => {
+      return (
+        (results.name.first
+          .toLowerCase()
+          .indexOf(filteredEmployees) !== -1 )||
+          (results.name.last
+          .toLowerCase()
+          .indexOf(filteredEmployees) !== -1 )||
+          (results.name.first
+          .toLowerCase()
+          .indexOf(filteredEmployees) !== -1 )||
+          (results.gender
+          .toLowerCase()
+          .indexOf(filteredEmployees) !== -1 )||
+          (results.phone
+          .toLowerCase()
+          .indexOf(filteredEmployees) !== -1) ||
+          (results.cell
+          .toLowerCase()
+          .indexOf(filteredEmployees) !== -1 )||
+          (results.location.city
+          .toLowerCase()
+          .indexOf(filteredEmployees) !== -1 )||
+          (results.location.state
+          .toLowerCase()
+          .indexOf(filteredEmployees) !== -1 ) ||
+          (results.dob.age.toString()
+          .toLowerCase()
+          .indexOf(filteredEmployees) !== -1)
+       
+      );
+    });
     this.setState({
-      //[name]: value
-        search: value,
-      filteredEmployees: filteredEmployee
+      search: value,
+      filteredEmployees: filteredEmployee,
     });
   };
 
 
-//   handleFormSubmit = event => {
-//     event.preventDefault();
-//     this.searchEmployees(this.state.search);
-//   };
-
   render() {
+    
+  
     // const filteredEmployee = this.state.results.filter(
     //     (filteredEmployees) => {
     //         return (
@@ -64,16 +85,14 @@ class SearchResults extends Component {
       <div>
         <SearchForm
           search={this.state.search}
-          //handleFormSubmit={this.handleFormSubmit}
           handleInputChange={this.handleInputChange}
         />
-        <EmployeeList results={this.state.results} filteredEmployees={this.state.filteredEmployee}/>
+        <EmployeeList
+          results={this.state.filteredEmployees}
+        />
       </div>
     );
   }
-
-
-
 }
 
 export default SearchResults;
