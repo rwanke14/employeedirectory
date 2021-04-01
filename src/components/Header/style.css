@@ -1,0 +1,15 @@
+.card, h1{
+    text-align: center;
+    position: relative;
+    font-family: 'Lato', sans-serif;
+    background-color: #003153;
+    color: white;
+}
+
+.card-body, h1 {
+    text-align: center;
+    position: relative;
+    font-family: 'Lato', sans-serif;
+    background-color: #003153;
+    color: white;
+}
