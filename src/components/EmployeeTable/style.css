@@ -1,0 +1,16 @@
+.header{
+    background-color: #003153;
+  
+}
+
+button.btn { 
+  color: white;  
+  font-family: 'Lato', sans-serif;
+  border-color: white;
+}
+
+button.btn:hover{
+    background-color: lightblue;
+    color: #003153;;
+}
+

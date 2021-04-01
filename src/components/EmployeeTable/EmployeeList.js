@@ -1,12 +1,13 @@
 import React from "react";
+import "./style.css"
 
 function EmployeeList(props) {
   return (
     <div className="container">
       <table className="table caption-top">
         
-        <thead>
-          <tr>
+        <thead className="header">
+          <tr className="font">
             <th scope="col">
               <button type='button' className="btn">
               Picture</button></th>
