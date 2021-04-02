@@ -48,6 +48,8 @@ https://github.com/rwanke14/employeedirectory
 
 ## Additional sources:
 
+Used sources from the internet for React tutorials on working with filters and sorting arrays using React props.
+
 Also worked with my study group to better understand how to apply what we learned in class to this readme. Note: Some code may look similar since we generally come out these thinking in the same ways. 
 
 Feedback, brainstorming, and general support to study group:
