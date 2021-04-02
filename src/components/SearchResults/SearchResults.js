@@ -157,7 +157,7 @@ class SearchResults extends Component {
     //         })
     //         this.setState({sortType: "descending"});
     //     } else {
-    //         setList = this.state.results.sort((a,b) => {
+    //         setList = this.state.results.tosort((a,b) => {
     //             return b.dob[cell].localeCompare(a.dob[cell])
     //         })
     //         this.setState({sortType: "ascending"})

@@ -14,3 +14,8 @@ button.btn:hover{
     color: #003153;;
 }
 
+tr:nth-child(even) {
+    background-color: lightblue;
+
+}
+

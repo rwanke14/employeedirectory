@@ -39,7 +39,7 @@ function EmployeeList(props) {
         </thead>
         <tbody>
           {props.results.map(results => (
-            <tr key={results.id}>
+            <tr key={results.id} className="rows">
               <td><img alt={results.picture.thumbnail} className="img-fluid" src={results.picture.thumbnail} style={{ margin: "0 auto" }} /></td>
               <td>{results.name.first}</td>
               <td>{results.name.last}</td>
